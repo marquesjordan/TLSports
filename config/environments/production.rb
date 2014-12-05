@@ -13,7 +13,7 @@ Trueleaguesports::Application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-
+  
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
@@ -77,4 +77,9 @@ Trueleaguesports::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Note to set this to host
+  config.action_mailer.default_url_options = { host: 'http://tlsports.herokuapp.com/'}
+
+  config.action_mailer.default_url_options = { :host => 'http://tlsports.herokuapp.com/' }
 end
