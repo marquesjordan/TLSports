@@ -1,4 +1,8 @@
 Trueleaguesports::Application.routes.draw do
+  get "league/index"
+  get "league/new"
+  get "league/show"
+  get "league/edit"
   devise_for :users
   root "pages#home"
 

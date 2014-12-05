@@ -3,6 +3,22 @@
 
 body { padding-top: 70px; }
 
+//////////  NAV BAR   ////////
+.navbar.navbar-default{
+	height: 76px;
+	border-radius: 0px;
+}
+
+#logo{
+	color: red;
+	font-size: 25pt;
+}
+
+.navbar-header{
+	margin-top: 10px;
+}
+
+////////// HOME PAGE /////////
 video#bgvid {
 position: fixed; right: 0; bottom: 0;
 min-width: 100%; min-height: 100%;
@@ -11,6 +27,9 @@ width: auto; height: auto; z-index: -100;
 background-size: cover;
 }
 
+.right {
+	float: right;
+}
 .homerow {
 	height: 650px;
 }
@@ -29,7 +48,3 @@ background-size: cover;
 	color: white;
 }
 
-.navbar.navbar-default{
-	height: 76px;
-	border-radius: 0px;
-}
