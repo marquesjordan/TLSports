@@ -1,11 +1,26 @@
-
+<video autoplay loop poster="" id="bgvid">
+<source src="../assets/bball_bg2.webmhd.webm" type="video/webm">
+<source src="../assets/bball_bg2.mp4" type="video/mp4">
+</video>
+<br><br><br><br>
+<div class="homerow" id="homerow_one">
 <div class="container">
+
 	<div class="jumbotron">
 		<div class="container">
 
 			<h1>True League Sports</h1>
 			<p>Sport's Leagues and Athlete data management tool</p>
-			
+			<% if user_signed_in? %>
+          # do something
+    	<% else %>
+	       <p>
+	         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+	         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+	       </p>
+  		<% end %>  
 		</div>
 	</div>
 </div>
+</div>
+<div class="homerow" id="homerow_two"></div
