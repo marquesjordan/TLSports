@@ -26,7 +26,7 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-  	params.require(:league).permit(:name, :organizer, :orginazation, :description, :max_teams, :status, :begin_date, :end_date, :user_id)
+  	params.require(:league).permit(:name, :organizer, :orginazation, :description, :max_teams, :status, :begin_date, :end_date, :user_id, locations_attributes: [:id, :loc_name, :street, :city, :zip, :_destory])
   end
 
 end
