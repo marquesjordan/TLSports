@@ -1,6 +1,6 @@
-<video autoplay loop poster="" id="bgvid">
-<source src="../assets/bball_bg2.webmhd.webm" type="video/webm">
-<source src="../assets/bball_bg2.mp4" type="video/mp4">
+<video autoplay loop poster="../assets/bgdefault.jpg" id="bgvid">
+	<source src="../assets/bball_bg2.webmhd.webm" type="video/webm">
+	<source src="../assets/bball_bg2.mp4" type="video/mp4">
 </video>
 <br>
 
@@ -20,7 +20,7 @@
     	<% else %>
 	       <p>
 	         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
-	         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+	         <%= link_to "Register", new_user_registration_path, class: "btn btn-primary btn-lg" %>
 	       </p>
   		<% end %>  
 		</div>

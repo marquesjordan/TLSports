@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205222503) do
+ActiveRecord::Schema.define(version: 20141209185552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,30 @@ ActiveRecord::Schema.define(version: 20141205222503) do
     t.string   "description"
     t.datetime "begin_date"
     t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "status"
+    t.integer  "max_teams"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "loc_name"
+    t.string   "street"
+    t.string   "city"
+    t.integer  "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "league_id"
+  end
+
+  create_table "teams", force: true do |t|
+    t.string   "team_name"
+    t.string   "slogan"
+    t.string   "team_contact"
+    t.string   "team_phone"
+    t.string   "team_email"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

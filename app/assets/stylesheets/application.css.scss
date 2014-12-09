@@ -14,6 +14,12 @@ body { padding-top: 70px; }
 	font-size: 25pt;
 }
 
+.io_button{
+	color: black;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
 .navbar-header{
 	margin-top: 10px;
 }
@@ -48,3 +54,52 @@ background-size: cover;
 	color: white;
 }
 
+
+////////// HOME PAGE /////////
+
+.panel{
+	max-width: 600px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+////////// LEAGUE NEW /////////
+.form_page {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+////////// PORTAL /////////
+#portal{
+	margin-top: 15px;
+	text-align: center;
+	color: white;
+}
+
+div#portal.container{
+	background-image: url(../assets/hoops.jpg);
+	background-size: cover;
+
+}
+
+.title{
+	border-radius: 15px;
+	border: 2px solid red;
+	text-align: center;
+}
+
+#myleagues{
+	height: 120px;
+	overflow: scroll;
+}
+
+thead th {
+    height: 30px;
+
+    /*text-align: left;*/
+}
+
+tbody {
+    height: 30px;
+    overflow-y: auto;
+}

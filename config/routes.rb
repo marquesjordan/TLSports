@@ -1,13 +1,34 @@
 Trueleaguesports::Application.routes.draw do
-  get "league/index"
-  get "league/new"
-  get "league/show"
-  get "league/edit"
+
+
+  get "locations/index"
+  get "locations/new"
+  get "locations/show"
+  get "locations/edit"
   devise_for :users
   root "pages#home"
 
   get "pages/home"
   get "pages/about"
+  get "pages/portal"      => "pages#portal",      as: 'user_root'
+
+  get 'leagues/'          => 'leagues#index',     as: :leagues
+  get 'leagues/new'       => 'leagues#new',       as: :new_league
+  get 'leagues/:id'       => 'leagues#show',      as: :league
+  post 'leagues/'         => 'leagues#create'
+  get 'leagues/:id/edit'  => 'leagues#edit',      as: :edit_league
+  patch 'leagues/:id'     => 'leagues#update',    as: :update_league
+  delete 'leagues/:id'    => 'leagues#destroy',   as: :delete_league
+
+  get 'teams/'          => 'teams#index',     as: :teams
+  get 'teams/new'       => 'teams#new',       as: :new_team
+  get 'teams/:id'       => 'teams#show',      as: :team
+  post 'teams/'         => 'teams#create'
+  get 'teams/:id/edit'  => 'teams#edit',      as: :edit_team
+  patch 'teams/:id'     => 'teams#update',    as: :update_team
+  delete 'teams/:id'    => 'teams#destroy',   as: :delete_team
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
