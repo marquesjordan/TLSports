@@ -22,3 +22,6 @@ pauseButton.addEventListener("click", function() {
 		icon.className += "glyphicon glyphicon-play";
 	}
 });
+
+
+

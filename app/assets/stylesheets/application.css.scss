@@ -70,10 +70,14 @@ background-size: cover;
 }
 
 ////////// PORTAL /////////
-#portal{
+div#portal{
 	margin-top: 15px;
 	text-align: center;
 	color: white;
+}
+
+#map-canvas{
+	height: 250px;
 }
 
 div#portal.container{
@@ -89,8 +93,12 @@ div#portal.container{
 }
 
 #myleagues{
-	height: 120px;
+	height: 350px;
 	overflow: scroll;
+}
+
+#city_state{
+	float: left;
 }
 
 thead th {

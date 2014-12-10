@@ -1,9 +1,24 @@
+<script type="text/javascript">
+function initialize() {
+  var mapOptions = {
+    center: { lat: 34.03, lng: -118.15},
+    zoom: 8
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+<div class="container">
 <div class="container" id="portal">
 	<h1>My Portal</h1>
-</div>
-<div class="container">
+</div><br>
+<div id="map-canvas"></div>
+
 	<div class="wrapper">
-  	<h3 class="title">My Leagues</h3>
+  	<h3 class="title">Leagues</h3>
 	  
 	  <div id="myleagues">
 	  	<table class="table table-striped">
@@ -11,6 +26,8 @@
 	  		<thead>
 			  	<tr>
 			  		<th>Name</th>
+			  		<th>Organizer</th>
+			  		<th>City, State</th>
 			  		<th>Begins</th>
 			  		<th>Status</th>
 			  		<th>Teams</th>
@@ -28,6 +45,10 @@
 			  							 	end 
 			  						%> >
 			  		<td><%= l.name %></td>
+			  		<td><%= l.organizer %></td>
+			  		<% loc = Location.where(:league_id => l.id).first %>
+
+			  		<td><% if loc %><%= loc.city %>, <%= loc.state %><% end %></td>
 			  		<td><%= l.begin_date.strftime("%b %d, %Y") %></td>
 			  		<td><%= l.status %></td>
 			  		<td>0 / <%= l.max_teams %></td>
