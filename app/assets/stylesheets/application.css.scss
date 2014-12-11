@@ -9,9 +9,23 @@ body { padding-top: 70px; }
 	border-radius: 0px;
 }
 
+.navbar{
+	background-image: url(../assets/hoops.jpg);
+	background-size: cover;	
+}
+
 #logo{
-	color: red;
+	color: white;
 	font-size: 25pt;
+	text-align: center;
+}
+
+.navbar-brand{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
 }
 
 .io_button{
@@ -110,4 +124,15 @@ thead th {
 tbody {
     height: 30px;
     overflow-y: auto;
+}
+
+.spacer{
+	height: 20px;
+}
+// #right{
+// 	float: right;
+// }
+
+.locs{
+	border: 1px solid black;
 }

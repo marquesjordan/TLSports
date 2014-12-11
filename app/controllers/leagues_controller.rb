@@ -18,6 +18,7 @@ class LeaguesController < ApplicationController
 
   def show
   	@league = League.find(params[:id])
+    @locations = Location.where(:league_id => params[:id]).to_a
   end
 
   def edit
@@ -26,7 +27,7 @@ class LeaguesController < ApplicationController
   private
 
   def league_params
-  	params.require(:league).permit(:name, :organizer, :orginazation, :description, :max_teams, :status, :begin_date, :end_date, :user_id, locations_attributes: [:id, :loc_name, :street, :city, :state, :zip, :_destory])
+  	params.require(:league).permit(:name, :organizer, :orginazation, :description, :max_teams, :status, :begin_date, :end_date, :user_id, locations_attributes: [:id, :loc_name, :street, :city, :state, :zip, :_destroy])
   end
 
 end

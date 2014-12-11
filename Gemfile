@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'turbolinks'
 gem "nested_form"
-
+gem "geocoder"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 

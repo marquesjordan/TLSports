@@ -1,2 +1,60 @@
-<h1>League#show</h1>
-<p>Find me in app/views/league/show.html.erb</p>
+<script type="text/javascript">
+function initialize() {
+  var mapOptions = {
+    center: { lat: 34.03, lng: -118.15},
+    zoom: 8
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+	function getMarker(lat, lng) {
+	  var myLatlng = new google.maps.LatLng(lat, lng);
+
+	  var marker = new google.maps.Marker({
+	    position: myLatlng,
+	    map: map,
+	    title:"Hello World!"
+		});
+	}
+
+	<% @locations.each do |location| %>
+
+	<% if location.latitude %>
+		getMarker(<%= location.latitude %>, <%= location.longitude %> ); 
+	<%end %>
+
+
+	<% end %>
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div class="spacer"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<p class="lead"><b>League Name:</b><span id="right"> <%= @league.name %></span></p>
+			<p class="lead"><b>Organizer: </b><span id="right"><%= @league.organizer %></span></p>
+			<p class="lead"><b>Organization: </b><span id="right"><%= @league.orginazation %></span></p>
+			<p class="lead"><b>Description: </b><span><%= @league.description %></span></p>
+			<p class="lead"><b>Begin Date: </b><span id="right"><%= @league.begin_date.strftime("%b %d, %Y") %></span></p>
+			<p class="lead"><b>End Date: </b><span id="right"><%= @league.end_date.strftime("%b %d, %Y") %></span></p>
+			<p class="lead"><b>Teams: </b><span id="right"><%= @league.max_teams %></span></p>
+		</div>
+		<div class="col-md-8">
+			<div id="map-canvas"></div>
+			<h3>Locations</h3>
+			<% @locations.each do |location| %>
+				<div class="locs">
+					<div class="container">
+						<p>Name: <%= location.loc_name %></p>
+						<p>Address: <%= location.street %>, <%=location.city%></p>
+						<p>State / Zip: <%= location.state %> <%= location.zip %></p>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

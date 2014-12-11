@@ -6,15 +6,47 @@ function initialize() {
   };
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+
+	function getMarker(lat, lng) {
+	  var myLatlng = new google.maps.LatLng(lat, lng);
+
+	  var marker = new google.maps.Marker({
+	    position: myLatlng,
+	    map: map,
+	    title:"Hello World!"
+		});
+
+	google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  });
+  var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  });
+
+	}
+
+	<% @locations.each do |location| %>
+
+	<% if location.latitude %>
+		getMarker(<%= location.latitude %>, <%= location.longitude %> ); 
+	<%end %>
+
+	var contentString = '<div id="content">'+ '<p><%= location.loc_name %></p>' + '</div>';
+
+
+	<% end %>
+
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 
 <div class="container">
-<div class="container" id="portal">
+<!-- <div class="container" id="portal">
 	<h1>My Portal</h1>
-</div><br>
+</div><br> -->
+<div class="spacer"></div>
 <div id="map-canvas"></div>
 
 	<div class="wrapper">
@@ -47,7 +79,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			  		<td><%= l.name %></td>
 			  		<td><%= l.organizer %></td>
 			  		<% loc = Location.where(:league_id => l.id).first %>
-
 			  		<td><% if loc %><%= loc.city %>, <%= loc.state %><% end %></td>
 			  		<td><%= l.begin_date.strftime("%b %d, %Y") %></td>
 			  		<td><%= l.status %></td>

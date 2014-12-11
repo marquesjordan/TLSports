@@ -4,4 +4,6 @@ class League < ActiveRecord::Base
 
 	accepts_nested_attributes_for :locations, :allow_destroy => true
 	
+
+
 end
