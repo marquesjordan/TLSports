@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210023838) do
+ActiveRecord::Schema.define(version: 20141215232311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "league_teams", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "league_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "league_teams", ["league_id"], name: "index_league_teams_on_league_id", using: :btree
+  add_index "league_teams", ["team_id"], name: "index_league_teams_on_team_id", using: :btree
 
   create_table "leagues", force: true do |t|
     t.string   "name"
@@ -42,6 +58,49 @@ ActiveRecord::Schema.define(version: 20141210023838) do
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  create_table "playergames", force: true do |t|
+    t.integer  "points"
+    t.integer  "rebounds"
+    t.integer  "assist"
+    t.integer  "fouls"
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playergames", ["game_id"], name: "index_playergames_on_game_id", using: :btree
+  add_index "playergames", ["player_id"], name: "index_playergames_on_player_id", using: :btree
+
+  create_table "players", force: true do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "hometown"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "playerteams", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playerteams", ["player_id"], name: "index_playerteams_on_player_id", using: :btree
+  add_index "playerteams", ["team_id"], name: "index_playerteams_on_team_id", using: :btree
+
+  create_table "teamgames", force: true do |t|
+    t.integer  "result"
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "teamgames", ["game_id"], name: "index_teamgames_on_game_id", using: :btree
+  add_index "teamgames", ["team_id"], name: "index_teamgames_on_team_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "team_name"

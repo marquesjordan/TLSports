@@ -1,2 +1,53 @@
-<h1>League#index</h1>
-<p>Find me in app/views/league/index.html.erb</p>
+
+
+<div class="container">
+<!-- <div class="container" id="portal">
+	<h1>My Portal</h1>
+</div><br> -->
+<div class="spacer"></div>
+<!-- <div id="map-canvas"></div> -->
+
+	<div class="wrapper">
+  	<h3 class="title">All Leagues</h3>
+	  
+	  <div id="myleagues">
+	  	<table class="table table-striped">
+
+	  		<thead>
+			  	<tr>
+			  		<th>Name</th>
+			  		<th>Organizer</th>
+			  		<th>City, State</th>
+			  		<th>Begins</th>
+			  		<th>Status</th>
+			  		<th>Teams</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	<% @leagues.each do |l| %>
+			  	<tr onclick="document.location = '../leagues/' + <%=l.id%>;" id="trigger" class=<%=
+			  								if l.status == "open"
+			  										"success"
+			  								elsif l.status == "full"
+			  										"warning"
+			  								else
+			  										"info"
+			  							 	end 
+			  						%> >
+			  		<td><%= l.name %></td>
+			  		<td><%= l.organizer %></td>
+			  		<% loc = Location.where(:league_id => l.id).first %>
+			  		<td><% if loc %><%= loc.city %>, <%= loc.state %><% end %></td>
+			  		<td><%= l.begin_date.strftime("%b %d, %Y") %></td>
+			  		<td><%= l.status %></td>
+			  		<td>0 / <%= l.max_teams %></td>
+			  	</tr>
+			  	<% end %>
+			  </tbody>
+		  </table>
+	  </div>
+	</div>  
+
+</div>
+
+

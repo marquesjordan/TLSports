@@ -27,23 +27,36 @@ function initialize() {
 	<% end %>
 
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
 
 <div class="spacer"></div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<p class="lead"><b>League Name:</b><span id="right"> <%= @league.name %></span></p>
 			<p class="lead"><b>Organizer: </b><span id="right"><%= @league.organizer %></span></p>
 			<p class="lead"><b>Organization: </b><span id="right"><%= @league.orginazation %></span></p>
 			<p class="lead"><b>Description: </b><span><%= @league.description %></span></p>
 			<p class="lead"><b>Begin Date: </b><span id="right"><%= @league.begin_date.strftime("%b %d, %Y") %></span></p>
 			<p class="lead"><b>End Date: </b><span id="right"><%= @league.end_date.strftime("%b %d, %Y") %></span></p>
-			<p class="lead"><b>Teams: </b><span id="right"><%= @league.max_teams %></span></p>
+			<p class="lead"><b>Teams: </b><span id="right"><%= @total %>/<%= @league.max_teams %></span></p>
+			<br>
+			<h1>
+				<% if @total == @league.max_teams %> 	
+					This League is at capacity
+					<% @league.status = 'full' %>
+				<% else %>
+					<%= link_to("#myModal", class: "btn btn-default btn-lg", "data-toggle" => "modal" ) do %>
+						Register Team <i class="glyphicon glyphicon-plus"></i>
+					<%end%>
+				<% end %>
+
+			</h1>
+			
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<div id="map-canvas"></div>
 			<h3>Locations</h3>
 			<% @locations.each do |location| %>
@@ -58,3 +71,35 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Register Team</h4>
+      </div>
+      <div class="modal-body">
+    		<div class="field">
+
+    		<%= form_for(@leagueteam||LeagueTeam.new) do |f| %>
+					
+					<%= collection_select(:league_team, :team_id, @user_teams, :id, :team_name, {:prompt => true, :required=>true}, {:class=>'form-control'}) %>
+					<%= f.hidden_field :league_id, :value => @league.id %>
+					<%= f.hidden_field :status, :value => 'Paid' %>
+					<br>
+					<%= f.submit "Submit Question", class: "btn btn-danger" %>
+				
+				<% end %>
+
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+

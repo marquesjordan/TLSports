@@ -5,14 +5,15 @@ Trueleaguesports::Application.routes.draw do
   get "locations/new"
   get "locations/show"
   get "locations/edit"
+
   devise_for :users
   root "pages#home"
 
   get "pages/home"
   get "pages/about"
-  get "pages/portal"      => "pages#portal",      as: 'user_root'
+  get "pages/portal"      => "pages#portal"
 
-  get 'leagues/'          => 'leagues#index',     as: :leagues
+  get 'leagues/'          => 'leagues#index',     as: :leagues,      as: 'user_root'
   get 'leagues/new'       => 'leagues#new',       as: :new_league
   get 'leagues/:id'       => 'leagues#show',      as: :league
   post 'leagues/'         => 'leagues#create'
@@ -27,6 +28,14 @@ Trueleaguesports::Application.routes.draw do
   get 'teams/:id/edit'  => 'teams#edit',      as: :edit_team
   patch 'teams/:id'     => 'teams#update',    as: :update_team
   delete 'teams/:id'    => 'teams#destroy',   as: :delete_team
+
+  get 'league_teams/'          => 'league_teams#index',     as: :leagueteams
+  get 'league_teams/new'       => 'league_teams#new',       as: :new_leagueteam
+  get 'league_teams/:id'       => 'league_teams#show',      as: :leagueteam
+  post 'league_teams/'         => 'league_teams#create'
+  get 'league_teams/:id/edit'  => 'league_teams#edit',      as: :edit_leagueteam
+  patch 'league_teams/:id'     => 'league_teams#update',    as: :update_leagueteam
+  delete 'league_teams/:id'    => 'league_teams#destroy',   as: :delete_leagueteam
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -19,6 +19,14 @@ class LeaguesController < ApplicationController
   def show
   	@league = League.find(params[:id])
     @locations = Location.where(:league_id => params[:id]).to_a
+    @user_teams = Team.where(:user_id => current_user.id).to_a
+    @tot_teams = LeagueTeam.where(:league_id => @league.id).to_a
+    
+    if @tot_teams 
+      @total = @tot_teams.count
+    else
+      @total = 0
+    end
   end
 
   def edit

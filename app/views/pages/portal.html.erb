@@ -30,11 +30,22 @@ function initialize() {
 	<% if location.latitude %>
 		getMarker(<%= location.latitude %>, <%= location.longitude %> ); 
 	<%end %>
-
-	var contentString = '<div id="content">'+ '<p><%= location.loc_name %></p>' + '</div>';
+	<% mark_league = League.where(:id => location.league_id).first %>
+		var contentString = '<div id="content">'+ '<p><%= mark_league.name %>, <%= mark_league.id %></p>' + '<br>'
+							+ '<p><%= location.street %></p>' + '</div>';
+	
 
 
 	<% end %>
+
+	var trig = getElementById("trigger")
+	trig.addEventListener('click', function() {
+    infowindow.open(map,marker);
+  };
+  var trig = getElementById("trigger")
+  trig.addEventListener.style.border = "1px solid red";
+  });
+
 
 }
 
@@ -47,11 +58,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<h1>My Portal</h1>
 </div><br> -->
 <div class="spacer"></div>
-<div id="map-canvas"></div>
+<!-- <div id="map-canvas"></div> -->
 
 	<div class="wrapper">
-  	<h3 class="title">Leagues</h3>
-	  
+  	<h3 class="title"> My Leagues</h3>
+	  <div><%= link_to "Add League", new_league_path, class: "btn btn-danger"%></div>
 	  <div id="myleagues">
 	  	<table class="table table-striped">
 
@@ -67,7 +78,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			  </thead>
 			  <tbody>
 			  	<% @my_leagues.each do |l| %>
-			  	<tr class=<%=
+			  	<tr onclick="document.location = '../leagues/' + <%=l.id%>;" id="trigger" class=<%=
 			  								if l.status == "open"
 			  										"success"
 			  								elsif l.status == "full"
@@ -89,28 +100,28 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		  </table>
 	  </div>
 	</div>  
-	<div class="row">
-	  <div class="col-md-6">
-	  	<h3 class="title">Teams</h3>
-	  	<table class="table table-striped">
-	  		<thead>
-			  	<tr>
-			  		<th>Name</th>
-			  		<th>Players</th>
-			  	</tr>
-			  </thead>
-			  <tbody>
-			  	<% @my_teams.each do |t| %>	
-			  		<tr>
-			  			<td><%= t.team_name %><td>
-			  			<td>0</td>
-			  		</tr>
-			  	<% end %>
-			  </tbody>
-	  	</table>
-	  </div>
-	  <div class="col-md-6">
-	  	<h3 class="title">Players</h3>
-	  </div>
-	</div>
+						<!-- <div class="row">
+						  <div class="col-md-6">
+						  	<h3 class="title">Teams</h3>
+						  	<table class="table table-striped">
+						  		<thead>
+								  	<tr>
+								  		<th>Name</th>
+								  		<th>Players</th>
+								  	</tr>
+								  </thead>
+								  <tbody>
+								  	<%# @my_teams.each do |t| %>	
+								  		<tr>
+								  			<td><#%= t.team_name %><td>
+								  			<td>0</td>
+								  		</tr>
+								  	<%# end %>
+								  </tbody>
+						  	</table>
+						  </div>
+						  <div class="col-md-6">
+						  	<h3 class="title">Players</h3>
+						  </div>
+						</div> -->
 </div>
