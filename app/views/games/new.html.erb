@@ -1,0 +1,15 @@
+<h1>NEW GAME</h1>
+
+<div class="container">
+	<%= form_for @game do |f| %>
+		<div>
+			<label>Game Location: </label><%= f.text_field :gameloc_id, class: "form-control" %>
+		</div>
+		<div>	
+			<label>Game Date: </label><%= f.date_field :gamedate, class: "form-control" %>
+		</div><br>
+		<div class="form-group">
+      <%= f.submit "Create Player", class: "btn btn-success" %>
+    </div>
+	<% end %>
+</div>

@@ -82,14 +82,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <div class="modal-body">
     		<div class="field">
 
-    		<%= form_for(@leagueteam||LeagueTeam.new) do |f| %>
+    		<% if @user_teams.length > 0 %>
+	    		<%= form_for(@leagueteam||LeagueTeam.new) do |f| %>
+						
+						<%= collection_select(:league_team, :team_id, @user_teams, :id, :team_name, {:prompt => true, :required=>true}, {:class=>'form-control'}) %>
+						<%= f.hidden_field :league_id, :value => @league.id %>
+						<%= f.hidden_field :status, :value => 'Paid' %>
+						<br>
+						<%= f.submit "Submit Team", class: "btn btn-danger" %>
 					
-					<%= collection_select(:league_team, :team_id, @user_teams, :id, :team_name, {:prompt => true, :required=>true}, {:class=>'form-control'}) %>
-					<%= f.hidden_field :league_id, :value => @league.id %>
-					<%= f.hidden_field :status, :value => 'Paid' %>
-					<br>
-					<%= f.submit "Submit Question", class: "btn btn-danger" %>
-				
+					<% end %>
+				<% else %>
+					<div id="reg_warning">
+						<h3>You do not have any teams!</h3><br>
+						<h4><%= link_to "Click to Create a Team", new_team_path %></h4>
+						
+					</div>
 				<% end %>
 
 				</div>

@@ -10,4 +10,8 @@ class PagesController < ApplicationController
   	@my_teams = Team.where(user_id: current_user.id)
   	@locations = Location.all
   end
+
+  def profile
+  	
+  end
 end

@@ -1,7 +1,7 @@
 <div class="container">
   <%= nested_form_for @league, url: {action: "create"} do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
     
       <h1>Register a new league</h1>
 
@@ -12,17 +12,17 @@
       	<label>Organization: </label><%= f.text_field :orginazation, class: "form-control" %>
         <label>Description:</label> <%= f.text_area :description, class: "form-control" %>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-5">
             <label>Start Date: </label><br>
             <%= f.date_field :begin_date, class: "form-control" %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <label>End Date: </label><br>
             <%= f.date_field :end_date, class: "form-control" %>
           </div>
         
-          <div class="col-md-4">
-            <label>Max Teams:</label> 
+          <div class="col-md-2">
+            <label>#Teams:</label> 
             <%= f.number_field :max_teams, class: "form-control" %> 
           </div>
         </div>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h1>Set Location(s)</h1>
           <%= f.fields_for :locations do |builder| %>
 
@@ -40,11 +40,11 @@
             <label>Street Address: </label>
             <%= builder.text_field :street, class: "form-control" %>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <label>City: </label>
                 <%= builder.text_field :city, class: "form-control" %>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label>State: </label>
                 <%= builder.text_field :state, :maxlength => 2,class: "form-control" %>
               </div>

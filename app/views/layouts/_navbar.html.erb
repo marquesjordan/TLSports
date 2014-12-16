@@ -5,12 +5,29 @@
         <p id="logo">True League Sports</p>
       </a>
     </div>
-  	<span class="right">
-    	<% if user_signed_in? %>
-        <p class="io_button"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p>
-      <% else %>
-        <p class="io_button"><%= link_to "Sign in", new_user_session_path %></p>
-      <% end %>
-    </span>
+<!--   	<span class="right">
+    	<%# if user_signed_in? %>
+        <p class="io_button"><%#= link_to "Log out", destroy_user_session_path, method: :delete %></p>
+      <%# else %>
+        <p class="io_button"><%#= link_to "Sign in", new_user_session_path %></p>
+      <%# end %>
+    </span> -->
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle io_button" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% if current_user %>
+                  <li><a href="#"></a></li>
+                  <li><%= link_to "Profile", profiles_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to "Sign in", new_user_session_path %></li>
+                  <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                <% end %>
+              </ul>
+          </li>
+       
+      </ul>
   </div>
 </nav>

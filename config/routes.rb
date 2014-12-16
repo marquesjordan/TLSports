@@ -1,10 +1,22 @@
 Trueleaguesports::Application.routes.draw do
 
 
+  get "games/index"
+  get "games/new"
+  get "games/show"
+  get "games/edit"
+  # get "players/index"
+  # get "players/new"
+  # get "players/show"
+  get "players/home"
   get "locations/index"
   get "locations/new"
   get "locations/show"
   get "locations/edit"
+
+  resources :games
+  resources :players
+  resources :locations
 
   devise_for :users
   root "pages#home"
@@ -12,6 +24,7 @@ Trueleaguesports::Application.routes.draw do
   get "pages/home"
   get "pages/about"
   get "pages/portal"      => "pages#portal"
+  get "pages/profile"      => "pages#profile",    as: :profiles
 
   get 'leagues/'          => 'leagues#index',     as: :leagues,      as: 'user_root'
   get 'leagues/new'       => 'leagues#new',       as: :new_league

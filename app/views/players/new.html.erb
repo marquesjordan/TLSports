@@ -1,0 +1,30 @@
+<h1>Player Profile</h1>
+
+<div class="container">
+		<div>
+			<label>Email: <%= current_user.email %></label>
+		</div>
+	<%= form_for @player do |f| %>
+    <div class="form-group">
+      <%= f.hidden_field :email, :value => current_user.email %>
+ 		</div>
+		<div>
+			<label>First Name</label>
+			<%= f.text_field :fname, class: "form-control" %>
+		</div>
+		<div>
+			<label>Last Name</label>
+			<%= f.text_field :lname, class: "form-control" %>
+		</div>
+		<div>
+			<label>Home Town</label>
+			<%= f.text_field :hometown, class: "form-control" %>
+		</div>
+		<br>
+    <div class="form-group">
+      <%= f.submit "Create Player", class: "btn btn-success" %>
+    </div>
+
+	<% end %>
+
+</div>

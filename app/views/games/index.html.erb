@@ -1,0 +1,14 @@
+<h1>List of All Games</h1>
+
+<table>
+	<tr>
+		<th>Location ID</th>
+		<th>Game Date</th>
+	</tr>
+	<% @games.each do |game| %>
+		<tr>
+			<td><%= game.gameloc_id %></td>
+			<td><%= game.gamedate %></td>
+		</tr>
+	<% end %> 
+</table>
