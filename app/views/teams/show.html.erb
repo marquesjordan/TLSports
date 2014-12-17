@@ -1,2 +1,11 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="header">
+	<h1><%= @team.team_name %></h1>
+	<p><%= @team.slogan %></p>
+</div>
+<div>
+	<h4>Players</h4>
+	<%= link_to "Join Team", :controller => "playerteams", :action => "create" %> 
+<div>
+<div>
+	<h4>Schedue/Results</h4>
+</div>

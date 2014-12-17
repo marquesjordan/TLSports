@@ -18,7 +18,7 @@
               <ul class="dropdown-menu" role="menu">
                 <% if current_user %>
                   <li><a href="#"></a></li>
-                  <li><%= link_to "Profile", profiles_path %></li>
+                  <li><%= link_to "Portal", profiles_path %></li>
                   <li class="divider"></li>
                   <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                 <% else %>

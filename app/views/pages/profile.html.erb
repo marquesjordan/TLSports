@@ -1,3 +1,30 @@
-<h1>Profiles</h1>
+<div class="container">
+	<div class="header">
+		<h1>Portal</h1>
+	</div>
 
-<%= link_to "Create Player Profile", new_player_path %>
+	<h2>Profile</h2>
+
+	<% if @profile.fname %>
+		<% fullname = @profile.fname + " " + @profile.lname + "'s profile" %> 
+		<%= link_to fullname, player_path(@profile.id) %>
+	<% else %>
+		<%= link_to "Create Player Profile", new_player_path %>
+	<%end%>
+
+	<h2>Teams</h2>
+
+	<% if @my_teams.length > 0 %>
+
+		<% @my_teams.each do |t| %>
+			
+			<%= link_to t.team_name, team_path(t.id) %>
+		<% end %>
+
+	<% else %>
+
+		<%= link_to "Join a team", teams_path %>
+
+	<% end %>
+
+</div>

@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'rails_12factor', group: :production
+gem 'paperclip', '~> 3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.1'

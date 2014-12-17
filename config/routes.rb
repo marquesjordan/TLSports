@@ -17,6 +17,7 @@ Trueleaguesports::Application.routes.draw do
   resources :games
   resources :players
   resources :locations
+  resources :playerteams
 
   devise_for :users
   root "pages#home"
